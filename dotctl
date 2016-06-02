@@ -12,4 +12,9 @@ bootstrap_rsync () {
               $HOME/.dotfiles/ $HOME/
 }
 
+update_submods () {
+    git submodule foreach git pull origin master
+}
+
 bootstrap_rsync
+# update_submods
