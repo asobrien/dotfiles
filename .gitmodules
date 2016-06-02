@@ -1,0 +1,6 @@
+[submodule "slimzsh/submod/zsh-history-substring-search"]
+	path = slimzsh/submod/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule "slimzsh/submod/zsh-syntax-highlighting"]
+	path = slimzsh/submod/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
