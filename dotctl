@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# this is just a helper utility install dotfiles like we do when
+# provisioning with salt
+
+bootstrap_rsync () {
+    [[ -f "$HOME/.dotfiles/.dotignore" ]] && dotignore="$HOME/.dotfiles/.dotignore" || dotignore=""; \
+        rsync --exclude '.git*' \
+              --exclude-from="${dotignore}" \
+              -ah \
+              --no-perms \
+              $HOME/.dotfiles/ $HOME/
+}
+
+bootstrap_rsync

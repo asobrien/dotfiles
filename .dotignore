@@ -1,0 +1,10 @@
+### Repository ###
+.dotignore
+.git*
+.DS_Store
+README.md
+dotctl
+
+### Frameworks ###
+slimzsh
+zsh
