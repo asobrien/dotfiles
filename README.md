@@ -44,9 +44,8 @@ Now, one can self provision like this (if required):
     [[ -f "$HOME/.dotfiles/.dotignore" ]] && dotignore="$HOME/.dotfiles/.dotignore" || dotignore=""; \
         rsync --exclude '.git*' \
               --exclude-from="${dotignore}" \
-              -ah \
-              --no-perms \
-              $HOME/.dotfiles/ /tmp/dottest
+              -ah --no-perms \
+              $HOME/.dotfiles/ $HOME
 ```
 
 we save the trouble with a bootstrap utility.
