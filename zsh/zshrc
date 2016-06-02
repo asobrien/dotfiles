@@ -1,0 +1,3 @@
+# main entry point to the slimzsh framework
+source $HOME/.slimzsh/slim.zsh
+
