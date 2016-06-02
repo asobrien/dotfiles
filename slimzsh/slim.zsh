@@ -22,10 +22,6 @@ source $slim_path/stack.zsh
 # source $slim_path/history.zsh  # we use it via a plugin
 # source $slim_path/correction.zsh  # more annoying than not
 
-# load submods
-source $slim_path/submod/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $slim_path/submod/zsh-history-substring-search/zsh-history-substring-search.zsh
-
 # What do I do?
 if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"

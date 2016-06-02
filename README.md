@@ -6,7 +6,7 @@ Quickstart
 Grab 'em:
 
 ```
-git clone git@github.com:asobrien/dotfiles.git $HOME/.dotfiles
+git clone --recursive git@github.com:asobrien/dotfiles.git $HOME/.dotfiles
 $HOME/.dotfiles/dotctl
 ```
 

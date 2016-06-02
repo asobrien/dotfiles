@@ -1,13 +1,17 @@
 # initialize a submodule if required
-for submod ($slim_path/submod/*); do
-  [[ ! -d "$submod" ]]
-  echo
-  echo "Initializing submodules ..."
-  echo
-  cd $HOME/.dotfiles
-  git submodule init
-  git submodule update
-  cd -
-  unset submod
-  break
+
+# check if submodules need initing
+submodstats=`git submodule status --recursive`
+
+for submodstat in $submodstats; do
+    if [[ ${submodstat:0:1} = \- ]] ; then
+        echo "Initializing and updating submodules ..."
+        echo
+        git submodule update --init --recursive
+        break
+    fi
 done
+
+# load submods
+source $slim_path/submod/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $slim_path/submod/zsh-history-substring-search/zsh-history-substring-search.zsh
