@@ -5,9 +5,11 @@ submodstats=$(cd ${__dotfiles_absdir} && git submodule status --recursive)
 
 for submodstat in $submodstats; do
     if [[ ${submodstat:0:1} = \- ]] ; then
+        echo
         echo "Initializing and updating submodules ..."
         echo
-        $(cd ${__dotfiles_absdir} && git submodule update --init --recursive)
+        # run in a subshell
+        /bin/bash -c "cd ${__dotfiles_absdir} && git submodule update --init --recursive"
         break
     fi
 done
