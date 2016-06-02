@@ -9,6 +9,7 @@ for submodstat in $submodstats; do
         echo "Initializing and updating submodules ..."
         echo
         # run in a subshell
+        # TODO: there is probably a better way, but this works
         /bin/bash -c "cd ${__dotfiles_absdir} && git submodule update --init --recursive"
         break
     fi
