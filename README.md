@@ -1,6 +1,24 @@
 .dotfiles
 =========
 
+Quickstart
+----------
+Grab 'em:
+
+```
+git clone git@github.com:asobrien/dotfiles.git $HOME/.dotfiles
+$HOME/.dotfiles/dotctl
+```
+
+and go!
+
+If your default shell is not zsh:
+```
+sudo apt-get install -y zsh  # or equivalent
+chsh -s $(which zsh)
+```
+
+
 This is designed to be used as a repo, or provisioned. That means we make
 a few compromises.
 

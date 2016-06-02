@@ -32,7 +32,7 @@ if command -v fasd >/dev/null 2>&1; then
 fi
 
 # load all plugins
-for plugin_file ($HOME/.slimzsh/plugins/*); do
+for plugin_file ($slim_path/plugins/*); do
   source $plugin_file
   unset plugin_file
 done
