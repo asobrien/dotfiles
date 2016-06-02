@@ -1,7 +1,7 @@
 # initialize a submodule if required
 
 # check if submodules need initing
-submodstats=`git submodule status --recursive`
+submodstats=`git -C ${__dotfiles_absdir} submodule status --recursive`
 
 for submodstat in $submodstats; do
     if [[ ${submodstat:0:1} = \- ]] ; then

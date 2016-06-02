@@ -1,4 +1,8 @@
+# path vars
 slim_path=`dirname $0`
+__slimzsh_absdir=`dirname $0:A`
+__dotfiles_absdir=${__slimzsh_absdir%/*}
+
 fpath=(/usr/local/share/zsh-completions $slim_path $fpath)
 
 autoload -U promptinit && promptinit
