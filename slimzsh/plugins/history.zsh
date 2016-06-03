@@ -10,6 +10,8 @@
 # Variables
 #
 
+t0=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)')
+
 HISTFILE="${HOME}/.zhistory"     # The path to the history file.
 HISTSIZE=100000                  # The maximum number of events to save in the internal history.
 SAVEHIST=100000                  # The maximum number of events to save in the history file.
@@ -37,3 +39,6 @@ setopt HIST_BEEP                 # Beep when accessing non-existent history.
 
 # Lists the ten most used commands.
 alias history-stat="history 0 | awk '{print \$2}' | sort | uniq -c | sort -n -r | head"
+
+t1=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)')
+echo "PLUGIN history: $(( t1-t0 ))"

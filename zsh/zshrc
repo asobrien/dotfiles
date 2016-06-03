@@ -1,3 +1,7 @@
+t0=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)')
+
 # main entry point to the slimzsh framework
 source $HOME/.slimzsh/slim.zsh
 
+t1=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)')
+echo "TOTAL RUNTIME zshrc: $(( t1-t0 ))"

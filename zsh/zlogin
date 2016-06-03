@@ -1,6 +1,8 @@
 # .zlogin
 # executed after .zshrc?
 
+t0=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)')
+
 # Print a random, hopefully interesting, adage.
 if (( $+commands[fortune] )); then
   if [[ -t 0 || -t 1 ]]; then
@@ -9,3 +11,6 @@ if (( $+commands[fortune] )); then
     print
   fi
 fi
+
+t1=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)')
+echo "TOTAL RUNTIME zlogin: $(( t1-t0 ))"

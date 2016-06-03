@@ -4,6 +4,8 @@
 #   curl -L https://iterm2.com/misc/`basename $SHELL`_startup.in >> \
 #     dotfiles/.slimzsh/plugins/iterm2_shell_integration.`basename $SHELL`
 
+t0=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)')
+
 if [[ -o login ]]; then
   if [ "$TERM" != "screen" -a "$ITERM_SHELL_INTEGRATION_INSTALLED" = "" ]; then
     export ITERM_SHELL_INTEGRATION_INSTALLED=Yes
@@ -133,3 +135,6 @@ if [[ -o login ]]; then
     printf "\033]1337;ShellIntegrationVersion=2;shell=zsh\007"
   fi
 fi
+
+t1=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)')
+echo "PLUGIN iterm: $(( t1-t0 ))"
