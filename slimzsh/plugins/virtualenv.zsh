@@ -2,7 +2,8 @@
 
 t1=$(perl -MTime::HiRes -e 'printf("%.0f\n",Time::HiRes::time()*1000)')
 
-if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+# if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+if (( $+commands[virtualenvwrapper.sh] )); then
     export WORKON_HOME=$HOME/.virtualenvs
     export PROJECT_HOME=$HOME/Code
     export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
