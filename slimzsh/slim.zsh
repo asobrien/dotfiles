@@ -31,10 +31,18 @@ if command -v fasd >/dev/null 2>&1; then
   eval "$(fasd --init zsh-hook zsh-ccomp zsh-ccomp-install zsh-wcomp zsh-wcomp-install posix-alias)"
 fi
 
+
 # load all plugins
 for plugin_file ($slim_path/plugins/*); do
   source $plugin_file
   unset plugin_file
+done
+
+
+# load all external modules
+for ext_init ($slim_path/external/**/init.zsh); do
+  source $ext_init
+  unset ext_init
 done
 
 
