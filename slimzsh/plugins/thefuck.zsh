@@ -10,9 +10,9 @@ if (( $+commands[thefuck] )); then
 
     # a faster, lazier fuck
     fuck() {
-        local fuck_args="$@"
+        local args="$@"
         eval "$(command thefuck --alias)"
-        eval "fuck $fuck_args &> /dev/null"
+        eval "fuck $args &> /dev/null"
     }
 fi
 
