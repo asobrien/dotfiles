@@ -25,3 +25,4 @@
 [submodule "slimzsh/external/ltv"]
 	path = slimzsh/external/ltv
 	url = git@bitbucket.org:asobrien/ltv-dotfiles.git
+	branch = master
