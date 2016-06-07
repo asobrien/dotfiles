@@ -9,3 +9,6 @@ dotctl
 slimzsh
 zsh
 vim
+
+### Other ###
+tmux-conf-theme
