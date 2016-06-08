@@ -3,6 +3,15 @@ alias less='less -R'
 alias grep='grep --color=auto'
 alias ..='cd ../'
 
+# colors with ls
+if [[ -x "`whence -p dircolors`" ]]; then
+  eval `dircolors`
+  alias ls='ls -F --color=auto'
+else
+  alias ls='ls -F'
+fi
+
+
 # GIT
 # alias gd='git diff'
 # alias gco='git checkout'
