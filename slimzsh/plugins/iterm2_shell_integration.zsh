@@ -42,7 +42,8 @@ if [[ -o login ]]; then
 
     # Mark start of prompt
     iterm2_prompt_start() {
-      printf "\033]133;A\007"
+      # printf "\033]133;A\007"
+      :
     }
 
     # Mark end of prompt

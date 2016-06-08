@@ -130,14 +130,15 @@ prompt_pure_preprompt_render() {
 	local git_color=242
 	[[ -n ${prompt_pure_git_last_dirty_check_timestamp+x} ]] && git_color=red
 
+	# username and machine if applicable
+	local preprompt=$prompt_pure_username
 	# construct preprompt, beginning with path
-	local preprompt="%F{blue}%~%f"
+	preprompt+="%F{blue}%~%f"
 	# git info
 	preprompt+="%F{$git_color}${vcs_info_msg_0_}${prompt_pure_git_dirty}%f"
 	# git pull/push arrows
 	preprompt+="%F{cyan}${prompt_pure_git_arrows}%f"
-	# username and machine if applicable
-	preprompt+=$prompt_pure_username
+
 	# execution time
 	preprompt+="%F{yellow}${prompt_pure_cmd_exec_time}%f"
 
@@ -312,8 +313,9 @@ prompt_pure_async_callback() {
 prompt_pure_setup() {
 	# prevent percentage showing up
 	# if output doesn't end with a newline
-	export PROMPT_EOL_MARK=''
 
+	export PROMPT_EOL_MARK=''
+	local PURE_PROMPT_SYMBOL="❯❯❯"
 	prompt_opts=(subst percent)
 
 	zmodload zsh/datetime
@@ -342,13 +344,25 @@ prompt_pure_setup() {
 	fi
 
 	# show username@host if logged in through SSH
-	[[ "$SSH_CONNECTION" != '' ]] && prompt_pure_username=' %F{242}%n@%m%f'
+	[[ "$SSH_CONNECTION" != '' ]] \
+		&& prompt_pure_username='%F{046}%n@%m%f ' \
+		&& CHEVRON="%F{226}${PURE_PROMPT_SYMBOL}%f"	\
+		|| CHEVRON="%F{cyan}${PURE_PROMPT_SYMBOL}%f"
 
 	# show username@host if root, with username in white
 	[[ $UID -eq 0 ]] && prompt_pure_username=' %F{white}%n%f%F{242}@%m%f'
 
+	# Set a RPROMPT WITH EXIT CODE
+	# local LAST_EXIT_CODE=$?
+	# echo $LAST_EXIT_CODE
+	# [[ $LAST_EXIT_CODE -ne 0 ]] && RPROMPT="%F{red}ERROR: ${LAST_EXIT_CODE}%f"
+	RPROMPT="%(?..%F{red}✘ %?%f)"
 	# prompt turns red if the previous command didn't exit with 0
-	PROMPT="%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯}%f "
+	CHEVRON="%(?.${CHEVRON}.%F{red}${PURE_PROMPT_SYMBOL})%f"
+	PROMPT="${CHEVRON:-❯❯❯} "
+
+
+
 }
 
 prompt_pure_setup "$@"
