@@ -39,13 +39,6 @@ for plugin_file ($slim_path/plugins/*); do
 done
 
 
-# load all external modules
-for ext_init ($slim_path/external/**/init.zsh); do
-  source $ext_init
-  unset ext_init
-done
-
-
 # load all private files
 if [[ -d "$slim_path/private" ]]; then
     for plugin_file ($slim_path/private/*); do
