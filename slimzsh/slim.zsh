@@ -47,3 +47,10 @@ if [[ -d "$slim_path/private" ]]; then
     done
 fi
 
+
+export PATH=$PATH:${slim_path}/bin
+
+# HOST SPECIFIC SETTINGS
+if [[ "$OSTYPE" = darwin* ]] && [[ `hostname -s` = "nitrogen" ]]; then
+    export PILLAR_PATH=~/Code/jwp/pillar
+fi
