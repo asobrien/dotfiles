@@ -1,5 +1,5 @@
 # initialize a submodule if required
-
+return 1
 # check if submodules need initing
 submodstats=$(cd ${__dotfiles_absdir} && git submodule status --recursive)
 
