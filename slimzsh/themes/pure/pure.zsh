@@ -358,7 +358,8 @@ prompt_pure_setup() {
 	# [[ $LAST_EXIT_CODE -ne 0 ]] && RPROMPT="%F{red}ERROR: ${LAST_EXIT_CODE}%f"
 	RPROMPT="%(?..%F{red}✘ %?%f)"
 	# prompt turns red if the previous command didn't exit with 0
-	CHEVRON="%(?.${CHEVRON}.%F{red}${PURE_PROMPT_SYMBOL})%f"
+	# Disable, annoying on local vs remote setup
+	# CHEVRON="%(?.${CHEVRON}.%F{red}${PURE_PROMPT_SYMBOL})%f"
 	PROMPT="${CHEVRON:-❯❯❯} "
 
 
