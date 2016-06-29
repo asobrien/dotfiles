@@ -124,7 +124,7 @@ def main():
     with tempfile.NamedTemporaryFile(bufsize=0) as conf_file:
 
         # format the host
-        if env in ('prod',):
+        if env in ('prd',):
             host = '{}.longtailvideo.com'.format(db_key)
         else:
             host = '{}.{}.longtailvideo.com'.format(db_key, env)
