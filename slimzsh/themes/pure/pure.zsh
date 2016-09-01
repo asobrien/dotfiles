@@ -123,6 +123,9 @@ prompt_pure_string_length_to_var() {
 }
 
 prompt_pure_preprompt_render() {
+	# make sure prompt_subst is unset to prevent parameter expansion in prompt
+	setopt local_options no_prompt_subst
+
 	# check that no command is currently running, the preprompt will otherwise be rendered in the wrong place
 	[[ -n ${prompt_pure_cmd_timestamp+x} && "$1" != "precmd" ]] && return
 
@@ -130,24 +133,26 @@ prompt_pure_preprompt_render() {
 	local git_color=242
 	[[ -n ${prompt_pure_git_last_dirty_check_timestamp+x} ]] && git_color=red
 
-	# username and machine if applicable
-	local preprompt=$prompt_pure_username
 	# construct preprompt, beginning with path
-	preprompt+="%F{blue}%~%f"
+	local preprompt="%F{blue}%~%f"
 	# git info
 	preprompt+="%F{$git_color}${vcs_info_msg_0_}${prompt_pure_git_dirty}%f"
 	# git pull/push arrows
 	preprompt+="%F{cyan}${prompt_pure_git_arrows}%f"
-
+	# username and machine if applicable
+	# preprompt+=$prompt_pure_username
 	# execution time
 	preprompt+="%F{yellow}${prompt_pure_cmd_exec_time}%f"
+
+	# make sure prompt_pure_last_preprompt is a global array
+	typeset -g -a prompt_pure_last_preprompt
 
 	# if executing through precmd, do not perform fancy terminal editing
 	if [[ "$1" == "precmd" ]]; then
 		print -P "\n${preprompt}"
 	else
-		# only redraw if preprompt has changed
-		[[ "${prompt_pure_last_preprompt}" != "${preprompt}" ]] || return
+		# only redraw if the expanded preprompt has changed
+		[[ "${prompt_pure_last_preprompt[2]}" != "${(S%%)preprompt}" ]] || return
 
 		# calculate length of preprompt and store it locally in preprompt_length
 		integer preprompt_length lines
@@ -158,7 +163,7 @@ prompt_pure_preprompt_render() {
 
 		# calculate previous preprompt lines to figure out how the new preprompt should behave
 		integer last_preprompt_length last_lines
-		prompt_pure_string_length_to_var "${prompt_pure_last_preprompt}" "last_preprompt_length"
+		prompt_pure_string_length_to_var "${prompt_pure_last_preprompt[1]}" "last_preprompt_length"
 		(( last_lines = ( last_preprompt_length - 1 ) / COLUMNS + 1 ))
 
 		# clr_prev_preprompt erases visual artifacts from previous preprompt
@@ -191,8 +196,8 @@ prompt_pure_preprompt_render() {
 		zle && zle .reset-prompt
 	fi
 
-	# store previous preprompt for comparison
-	prompt_pure_last_preprompt=$preprompt
+	# store both unexpanded and expanded preprompt for comparison
+	prompt_pure_last_preprompt=("$preprompt" "${(S%%)preprompt}")
 }
 
 prompt_pure_precmd() {
@@ -313,9 +318,8 @@ prompt_pure_async_callback() {
 prompt_pure_setup() {
 	# prevent percentage showing up
 	# if output doesn't end with a newline
-
 	export PROMPT_EOL_MARK=''
-	local PURE_PROMPT_SYMBOL="❯❯❯"
+
 	prompt_opts=(subst percent)
 
 	zmodload zsh/datetime
@@ -343,27 +347,14 @@ prompt_pure_setup() {
 		zle -N clear-screen prompt_pure_clear_screen
 	fi
 
-	# show username@host if logged in through SSH
-	[[ "$SSH_CONNECTION" != '' ]] \
-		&& prompt_pure_username='%F{046}%n@%m%f ' \
-		&& CHEVRON="%F{226}${PURE_PROMPT_SYMBOL}%f"	\
-		|| CHEVRON="%F{cyan}${PURE_PROMPT_SYMBOL}%f"
+	# show username@host
+	prompt_pure_username='%F{246}%n%F{251}@%m%f'
 
 	# show username@host if root, with username in white
-	[[ $UID -eq 0 ]] && prompt_pure_username=' %F{white}%n%f%F{242}@%m%f'
+	[[ $UID -eq 0 ]] && prompt_pure_username='%B%F{red}%n%f%F{251}@%m%f'
 
-	# Set a RPROMPT WITH EXIT CODE
-	# local LAST_EXIT_CODE=$?
-	# echo $LAST_EXIT_CODE
-	# [[ $LAST_EXIT_CODE -ne 0 ]] && RPROMPT="%F{red}ERROR: ${LAST_EXIT_CODE}%f"
-	RPROMPT="%(?..%F{red}✘ %?%f)"
 	# prompt turns red if the previous command didn't exit with 0
-	# Disable, annoying on local vs remote setup
-	# CHEVRON="%(?.${CHEVRON}.%F{red}${PURE_PROMPT_SYMBOL})%f"
-	PROMPT="${CHEVRON:-❯❯❯} "
-
-
-
+	PROMPT="${prompt_pure_username}%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-%B❯}%f "
 }
 
 prompt_pure_setup "$@"
