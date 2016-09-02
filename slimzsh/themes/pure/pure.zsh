@@ -349,12 +349,12 @@ prompt_pure_setup() {
 
 	# Check if we have a remote connection
 	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  		SESSION_TYPE=remote/ssh
+		SESSION_TYPE=remote/ssh
 		# many other tests omitted
 	else
-  		case $(ps -o comm= -p $PPID) in
-    	sshd|*/sshd) SESSION_TYPE=remote/ssh;;
-  		esac
+		case $(ps -o comm= -p $PPID) in
+		sshd|*/sshd) SESSION_TYPE=remote/ssh;;
+		esac
 	fi
 
 
