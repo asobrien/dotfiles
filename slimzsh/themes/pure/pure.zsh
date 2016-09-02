@@ -347,11 +347,25 @@ prompt_pure_setup() {
 		zle -N clear-screen prompt_pure_clear_screen
 	fi
 
+	# Check if we have a remote connection
+	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  		SESSION_TYPE=remote/ssh
+		# many other tests omitted
+	else
+  		case $(ps -o comm= -p $PPID) in
+    	sshd|*/sshd) SESSION_TYPE=remote/ssh;;
+  		esac
+	fi
+
+
 	# show username@host
 	prompt_pure_username='%F{246}%n%B%F{251}@%m%f'
 
 	# show username@host if root, with username in white
 	[[ $UID -eq 0 ]] && prompt_pure_username='%B%F{red}%n%f%B%F{251}@%m%f'
+
+	# modify remote prompt
+	[[ $SESSION_TYPE = "remote/ssh" ]] && prompt_pure_username="%B%F{202}● %f"${prompt_pure_username}
 
 	# Set a RPROMPT WITH EXIT CODE IF ERROR
 	RPROMPT="%(?..%F{red}✘ %?%f)"
