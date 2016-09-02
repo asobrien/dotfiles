@@ -348,10 +348,13 @@ prompt_pure_setup() {
 	fi
 
 	# show username@host
-	prompt_pure_username='%F{246}%n%F{251}@%m%f'
+	prompt_pure_username='%F{246}%n%B%F{251}@%m%f'
 
 	# show username@host if root, with username in white
-	[[ $UID -eq 0 ]] && prompt_pure_username='%B%F{red}%n%f%F{251}@%m%f'
+	[[ $UID -eq 0 ]] && prompt_pure_username='%B%F{red}%n%f%B%F{251}@%m%f'
+
+	# Set a RPROMPT WITH EXIT CODE IF ERROR
+	RPROMPT="%(?..%F{red}✘ %?%f)"
 
 	# prompt turns red if the previous command didn't exit with 0
 	PROMPT="${prompt_pure_username}%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-%B❯❯}%f "
