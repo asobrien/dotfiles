@@ -357,17 +357,22 @@ prompt_pure_setup() {
 		esac
 	fi
 
+	# default username and host
+	prompt_pure_user='%F{241}%n%f'
+	prompt_pure_host='%F{251}@%m%f'
 
-	# show username@host
-	prompt_pure_username='%F{246}%n%B%F{251}@%m%f'
-
-	# show username@host if root, with username in white
-	[[ $UID -eq 0 ]] && prompt_pure_username='%B%F{red}%n%f%B%F{251}@%m%f'
-
-
-	# remote prompts: ⦿  ●
+	# remote prompt symbols: ⦿  ●
 	# modify remote prompt
-	[[ $SESSION_TYPE = "remote/ssh" ]] && prompt_pure_username="%F{green}⦿ %f"${prompt_pure_username}
+	[[ $SESSION_TYPE = "remote/ssh" ]] && \
+		prompt_pure_user='%F{green}%n%f' && \
+		prompt_pure_host='%B%F{255}@%m%f' && \
+		prompt_pure_signal='%F{green}⦿ %f'
+
+	# show username bold in red
+	[[ $UID -eq 0 ]] && prompt_pure_user='%B%F{red}%n%f'
+
+	# set command prompt username
+	prompt_pure_username=${prompt_pure_signal}${prompt_pure_user}${prompt_pure_host}
 
 	# Set a RPROMPT WITH EXIT CODE IF ERROR
 	RPROMPT="%(?..%F{red}✘ %?%f)"
