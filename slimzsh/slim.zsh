@@ -9,7 +9,7 @@ autoload -U promptinit && promptinit
 prompt pure
 
 autoload -U compinit
-compinit
+compinit -u
 
 setopt autocd
 setopt extendedglob
