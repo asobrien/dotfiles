@@ -4,8 +4,10 @@ bindkey -s '\el' "ls\n"
 bindkey '^r' history-incremental-search-backward
 bindkey "^[[5~" up-line-or-history
 bindkey "^[[6~" down-line-or-history
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+# bindkey '^[[A' up-line-or-search
+# bindkey '^[[B' down-line-or-search
+bindkey '^[[A' history-beginning-search-backward
+bindkey '^[[B' history-beginning-search-forward
 bindkey "^[[H" beginning-of-line
 bindkey "^[[1~" beginning-of-line
 bindkey "^[OH" beginning-of-line
