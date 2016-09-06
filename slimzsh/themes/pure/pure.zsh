@@ -364,8 +364,10 @@ prompt_pure_setup() {
 	# show username@host if root, with username in white
 	[[ $UID -eq 0 ]] && prompt_pure_username='%B%F{red}%n%f%B%F{251}@%m%f'
 
+
+	# remote prompts: ⦿  ●
 	# modify remote prompt
-	[[ $SESSION_TYPE = "remote/ssh" ]] && prompt_pure_username="%B%F{202}● %f"${prompt_pure_username}
+	[[ $SESSION_TYPE = "remote/ssh" ]] && prompt_pure_username="%F{green}⦿ %f"${prompt_pure_username}
 
 	# Set a RPROMPT WITH EXIT CODE IF ERROR
 	RPROMPT="%(?..%F{red}✘ %?%f)"
