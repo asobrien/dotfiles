@@ -357,6 +357,8 @@ prompt_pure_setup() {
 		esac
 	fi
 
+	export SESSION_TYPE
+
 	# default username and host
 	prompt_pure_user='%F{241}%n%f'
 	prompt_pure_host='%F{251}@%m%f'
