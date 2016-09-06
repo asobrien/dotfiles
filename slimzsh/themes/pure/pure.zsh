@@ -347,6 +347,7 @@ prompt_pure_setup() {
 		zle -N clear-screen prompt_pure_clear_screen
 	fi
 
+	# FIXME: this needs to be recursive, (i.e., if we run sudo -s)
 	# Check if we have a remote connection
 	if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
 		SESSION_TYPE=remote/ssh
@@ -356,8 +357,6 @@ prompt_pure_setup() {
 		sshd|*/sshd) SESSION_TYPE=remote/ssh;;
 		esac
 	fi
-
-	export SESSION_TYPE
 
 	# default username and host
 	prompt_pure_user='%F{241}%n%f'
