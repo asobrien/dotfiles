@@ -26,3 +26,6 @@ alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
 if [[ -f $slim_path/aliases.zsh.local ]]; then
   source $slim_path/aliases.zsh.local
 fi
+
+# DEBIAN/UBUNTU
+alias apt-get-doit='apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade'
