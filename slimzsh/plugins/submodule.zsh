@@ -17,5 +17,5 @@
 
 # these should be initted since we use git subtrees
 # load submods
-source $slim_path/submod/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $slim_path/submod/zsh-history-substring-search/zsh-history-substring-search.zsh
+# source $slim_path/submod/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $slim_path/submod/zsh-history-substring-search/zsh-history-substring-search.zsh

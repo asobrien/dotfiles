@@ -54,3 +54,7 @@ export PATH=$PATH:${slim_path}/bin
 if [[ "$OSTYPE" = darwin* ]] && [[ `hostname -s` = "nitrogen" ]]; then
     export PILLAR_PATH=~/Code/jwp/pillar
 fi
+
+# FINALLY, do syntax highlight, etc.
+source $slim_path/extras/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $slim_path/extras/zsh-history-substring-search/zsh-history-substring-search.zsh
