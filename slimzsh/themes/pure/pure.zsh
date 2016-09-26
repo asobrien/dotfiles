@@ -366,11 +366,11 @@ prompt_pure_setup() {
 	# modify remote prompt
 	[[ $SESSION_TYPE = "remote/ssh" ]] && \
 		prompt_pure_user='%F{green}%n%f' && \
-		prompt_pure_host='%B%F{255}@%m%f' && \
+		prompt_pure_host='%F{255}@%m%f' && \
 		prompt_pure_signal='%F{green}⦿ %f'
 
 	# show username bold in red
-	[[ $UID -eq 0 ]] && prompt_pure_user='%B%F{red}%n%f'
+	[[ $UID -eq 0 ]] && prompt_pure_user='%F{red}%n%f'
 
 	# set command prompt username
 	prompt_pure_username=${prompt_pure_signal}${prompt_pure_user}${prompt_pure_host}
@@ -379,7 +379,7 @@ prompt_pure_setup() {
 	RPROMPT="%(?..%F{red}✘ %?%f)"
 
 	# prompt turns red if the previous command didn't exit with 0
-	PROMPT="${prompt_pure_username}%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-%B❯❯}%f "
+	PROMPT="${prompt_pure_username}%(?.%F{magenta}.%F{red})${PURE_PROMPT_SYMBOL:-❯❯}%f "
 }
 
 prompt_pure_setup "$@"
