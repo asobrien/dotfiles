@@ -20,7 +20,7 @@ fi
 # alias gp='git push'
 # alias gpp='git pull; git push'
 alias gwc='git whatchanged -p --abbrev-commit --pretty=medium'
-alias gg='git log --oneline --abbrev-commit --all --graph --decorate --color'
+alias gg='git log --oneline --abbrev-commit --graph --decorate --color'
 
 # SOURCE CUSTOM ALIASES
 if [[ -f $slim_path/aliases.zsh.local ]]; then
