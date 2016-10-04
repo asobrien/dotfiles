@@ -29,3 +29,20 @@ fi
 
 # DEBIAN/UBUNTU
 alias apt-get-doit='apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade'
+
+
+##################
+#  FUNCTIONS
+##################
+
+# a prettier less, with syntax highlighting
+pless() {
+    local has_pygments=`command -v pygmentize >/dev/null 2>&1`
+
+    if [ $has_pygments ]; then
+        pygmentize -f terminal256 -O style=vim $* | less -R
+    else
+        echo >&2 "Pygments not found.";
+        less $*
+    fi
+}
