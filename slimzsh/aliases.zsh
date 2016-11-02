@@ -30,6 +30,8 @@ fi
 # DEBIAN/UBUNTU
 alias apt-get-doit='apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade'
 
+# Calendaring
+alias gcal-agenda='gcalcli --calendar asobrien@jwplayer.com agenda now tomorrow'
 
 ##################
 #  FUNCTIONS
