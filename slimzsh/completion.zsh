@@ -73,6 +73,13 @@ fi
 
 zstyle -e ':completion:*:(ssh|scp|sftp|rsh|rsync):hosts' hosts 'reply=(${=${${(f)"$(cat {/etc/ssh_,~/.ssh/known_}hosts(|2)(N) /dev/null)"}%%[# ]*}//,/ })'
 
+# BREW sometimes installs completions to:
+#   /usr/local/share/zsh/site-functions/
+# if you want to use them, just symlink them to:
+#   /usr/local/share/zsh-completions
+# since that's defined in fpath.
+# see: https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
+
 # TODO: Remove---not really working
 # # Source all completion libraries
 # _zsh_ext_completions="/usr/local/share/zsh/site-functions"
