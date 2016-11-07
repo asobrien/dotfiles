@@ -13,3 +13,6 @@ fi
 # main entry point to the slimzsh framework
 source $HOME/.slimzsh/slim.zsh
 
+
+# added by travis gem
+[ -f /Users/aobrien/.travis/travis.sh ] && source /Users/aobrien/.travis/travis.sh
