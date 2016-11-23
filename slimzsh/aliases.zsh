@@ -34,6 +34,13 @@ alias apt-get-doit='apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Opt
 alias agenda='gcalcli --calendar asobrien@jwplayer.com agenda "10 minutes ago" tomorrow'
 
 ##################
+#  LTV
+##################
+# update salt repos on salt-dev
+alias ltv-dev-salt-pull="ssh salt-dev.longtailvideo.com 'cd /opt/ltv/provisioning/salt && git fetch && git merge FETCH_HEAD'"
+alias ltv-dev-pillar-pull="ssh salt-dev.longtailvideo.com 'cd /opt/ltv/provisioning/pillar && git fetch && git merge FETCH_HEAD'"
+
+##################
 #  FUNCTIONS
 ##################
 
