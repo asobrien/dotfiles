@@ -10,14 +10,17 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'tpope/vim-fugitive'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
 Plugin 'blueshirts/darcula'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'vitapluvia/vim-gurl'
+"Plugin 'tpope/vim-surround'
+"Plugin 'kien/ctrlp.vim'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'airblade/vim-gitgutter'
+"Plugin 'vitapluvia/vim-gurl'
+
 
 
 " All of your Plugins must be added before the following line
@@ -35,6 +38,33 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" ---------------------------------------
+" Airline configuration
+" ---------------------------------------
+
+let g:airline_theme='simple'
+let g:airline#extensions#tabline#enabled = 1
+set t_Co=256
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+
+
+" ---------------------------------------
+" NERDTree configuration
+" ---------------------------------------
+
+" autostart if no files specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" toggle with Ctrl+n
+map <C-n> :NERDTreeToggle<CR>
+
+" close vim if NERDTree is only window left
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif"
 
 
 
@@ -60,12 +90,3 @@ filetype plugin indent on    " required
 " let g:airline#extensions#tabline#enabled = 1
 "
 "
-" " NERDTree configuration
-"
-" " autostart if no files specified
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" " toggle with Ctrl+n
-" map <C-n> :NERDTreeToggle<CR>
-" " close vim if NERDTree is only window left
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif"
