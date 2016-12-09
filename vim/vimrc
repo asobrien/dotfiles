@@ -15,9 +15,23 @@ set shiftwidth=4
 set expandtab
 
 
-" show airline tabs
-let g:airline#extensions#tabline#enabled = 1
 
+
+" ---------------------------------------
+" Airline configuration
+" ---------------------------------------
+
+" show airline tabs
+" let g:airline#extensions#tabline#enabled = 1
+set encoding=utf-8
+let g:airline_powerline_fonts = 1
+let g:airline_theme='powerlineish'
+
+" set t_Co=256
+"
+" if !exists('g:airline_symbols')
+"     let g:airline_symbols = {}
+" endif
 
 " NERDTree configuration
 
