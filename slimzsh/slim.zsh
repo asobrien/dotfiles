@@ -5,6 +5,12 @@ __dotfiles_absdir=${__slimzsh_absdir%/*}
 
 fpath=(/usr/local/share/zsh-completions $slim_path $fpath)
 
+# Homebrew ZSH completions
+if [[ -d /usr/local/share/zsh/site-functions ]]; then
+    fpath+=(/usr/local/share/zsh/site-functions)
+fi
+
+
 autoload -U promptinit && promptinit
 prompt pure
 
