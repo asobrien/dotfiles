@@ -32,6 +32,7 @@ alias apt-get-doit='apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Opt
 
 # Calendaring
 alias agenda='gcalcli --calendar asobrien@jwplayer.com agenda "10 minutes ago" tomorrow'
+alias isodate='date -u +"%Y-%m-%dT%H:%M:%SZ"'
 
 ##################
 #  LTV
