@@ -56,6 +56,19 @@ fi
 
 export PATH=$PATH:${slim_path}/bin
 
+# ARCHITECTURE SPECIFIC
+if [[ "$OSTYPE" = darwin* ]]; then
+    # pip --user packages
+    export PATH=$PATH:$HOME/Library/Python/2.7/bin
+fi
+
+
+if [[ "$OSTYPE" = linux* ]]; then
+    # pip --user packages
+    export PATH=$PATH:$HOME/.local/bin
+fi
+
+
 # HOST SPECIFIC SETTINGS
 if [[ "$OSTYPE" = darwin* ]] && [[ `hostname -s` = "nitrogen" ]]; then
     export PILLAR_PATH=~/Code/jwp/pillar

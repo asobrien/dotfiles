@@ -49,7 +49,7 @@ alias ltv-dev-pillar-pull="ssh salt-dev.longtailvideo.com 'cd /opt/ltv/provision
 pless() {
     local has_pygments=`command -v pygmentize >/dev/null 2>&1`
 
-    if [ $has_pygments ]; then
+    if [ $? ]; then
         pygmentize -f terminal256 -O style=vim $* | less -R
     else
         echo >&2 "Pygments not found.";
