@@ -47,6 +47,12 @@ user     = {}
 password = {}
 """
 
+RDS_DOMAIN = {
+    'dev': 'cfay3tun9aj5.us-east-1.rds.amazonaws.com',
+    'stg': 'c3lrvslmrma5.us-east-1.rds.amazonaws.com',
+    'prd': 'cis2mjrqz8cb.us-east-1.rds.amazonaws.com'
+}
+
 def __get_env(environment):
     """Returns an env name for the proper pillar environment."""
         # envs have different slang, unify them here
@@ -124,17 +130,14 @@ def main():
     with tempfile.NamedTemporaryFile(bufsize=0) as conf_file:
 
         # format the host
-        if env in ('prd',):
-            host = '{}.longtailvideo.com'.format(db_key)
-        else:
-            host = '{}.{}.longtailvideo.com'.format(db_key, env)
+        host = '{}.{}'.format(db_key, RDS_DOMAIN[env])
 
         conf_file.file.write(MYSQL_CONF_TEMPLATE.format(host,
                                                    db['root_user'],
                                                    db['root_password']))
 
         # spawn the connection
-        sys.stdout.write('\nConnecting to {} ...\n\n'.format(host))
+        sys.stdout.write('\n{} *** Connecting to {} ...\n\n'.format(env.upper(), host))
         os.system('mysql --defaults-file={}'.format(conf_file.name))
 
 
