@@ -73,3 +73,8 @@ Not a problem, just create a symlink:
 ```
 ln -s path/to/repo .dotfiles
 ```
+
+TODO
+----
+Things I want to change:
+
