@@ -76,5 +76,5 @@ ln -s path/to/repo .dotfiles
 
 TODO
 ----
-Things I want to change: (they go here)
+Things I want to change:
 
