@@ -110,7 +110,7 @@ function gf_rel_finish {
         git pull --ff-only origin master && \
         git merge --no-ff release/$release_name && \
         git push origin master && \
-        git tag -a $release_name  && \
+        git tag -s $release_name -m "${release_name}" && \
         git push --tags origin && \
         git fetch origin && \
         git checkout develop && \
