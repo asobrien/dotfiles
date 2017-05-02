@@ -56,3 +56,9 @@ pless() {
         less $*
     fi
 }
+
+# install packages from ltv devpi
+pip-ltv() {
+  PIP_INDEX_URL="https://devpi.longtailvideo.com/root/ltv/+simple/" \
+    pip $*
+}
