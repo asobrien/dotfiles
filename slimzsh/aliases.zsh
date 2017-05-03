@@ -62,3 +62,7 @@ pip-ltv() {
   PIP_INDEX_URL="https://devpi.longtailvideo.com/root/ltv/+simple/" \
     pip $*
 }
+
+get_ssl_cert() {
+  echo "Q" | openssl s_client -connect $1:443 | openssl x509 -noout -text
+}
