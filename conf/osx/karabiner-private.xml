@@ -1,0 +1,80 @@
+<!-- REFERENCE: https://pqrs.org/osx/karabiner/xml.html.en -->
+<?xml version="1.0"?>
+<root>
+  <devicevendordef>
+      <vendorname>Microsoft</vendorname>
+      <vendorid>0x045e</vendorid>
+  </devicevendordef>
+
+  <deviceproductdef>
+      <productname>SurfaceErgonomic</productname>
+      <productid>0x0817</productid>
+  </deviceproductdef>
+
+  <item>
+      <name>Remap Surface Ergonomic Alt to Command</name>
+      <appendix>This maps the Microsoft Surface Ergonomic's ALT Key to Command.</appendix>
+
+      <identifier>surface_ergonomic.alt_to_command</identifier>
+
+      <device_only>DeviceVendor::Microsoft,
+      DeviceProduct::SurfaceErgonomic</device_only>
+
+      <autogen>
+          --KeyToKey--
+          KeyCode::OPTION_L,
+
+          KeyCode::COMMAND_L
+      </autogen>
+      <autogen>
+          --KeyToKey--
+          KeyCode::OPTION_R,
+
+          KeyCode::COMMAND_R
+      </autogen>
+  </item>
+  <item>
+      <name>Remap Surface Ergonomic Windows to Option</name>
+      <appendix>This maps the Microsoft Surface Ergonomic's Windows Key to Option.</appendix>
+
+      <identifier>surface_ergonomic.windows_to_option</identifier>
+
+      <device_only>DeviceVendor::Microsoft,
+      DeviceProduct::SurfaceErgonomic</device_only>
+
+      <autogen>
+          --KeyToKey--
+          KeyCode::COMMAND_L,
+
+          KeyCode::OPTION_L
+      </autogen>
+      <autogen>
+          --KeyToKey--
+          KeyCode::COMMAND_R,
+
+          KeyCode::OPTION_R
+      </autogen>
+  </item>
+  <item>
+      <name>Remap Surface Ergonomic Lock to Sleep Display</name>
+      <appendix>This maps the Microsoft Surface Ergonomic's Lock Key to Display Sleep Combo.</appendix>
+
+      <identifier>surface_ergonomic.lock_to_display_lock</identifier>
+
+      <device_only>DeviceVendor::Microsoft,
+      DeviceProduct::SurfaceErgonomic</device_only>
+
+      <autogen>
+          --KeyToKey--
+          KeyCode::L, ModifierFlag::OPTION_L,
+
+          ConsumerKeyCode::POWER , ModifierFlag::CONTROL_L | ModifierFlag::SHIFT_L
+      </autogen>
+      <autogen>
+          --KeyToKey--
+          KeyCode::COMMAND_R,
+
+          KeyCode::OPTION_R
+      </autogen>
+  </item>
+</root>
