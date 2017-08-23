@@ -64,5 +64,16 @@ pip-ltv() {
 }
 
 get_ssl_cert() {
-  echo "Q" | openssl s_client -connect $1:443 | openssl x509 -noout -text
+  local SSL_CERT_HOST="${1}"
+  local CA_CERTS=""
+
+  if [[ `uname` == "Darwin2" ]]; then
+    CA_CERTS=("-CAfile" "/usr/local/etc/openssl/cert.pem")
+  elif [[ `uname` == "Linux" ]]; then
+    CA_CERTS=("-CApath" "/etc/ssl/certs/")
+  else
+    (>&2 echo '\033[1;33mNo CA certs found; you may see verification errors\033[0m')
+  fi
+
+  echo "Q" | openssl s_client ${CA_CERTS[@]} -connect ${SSL_CERT_HOST}:443 | openssl x509 -noout -text
 }
