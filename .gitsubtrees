@@ -5,5 +5,18 @@
     path = slimzsh
     branch = master
 
+[subtree "slimzsh/fast-syntax-highlighting"]
+    url = https://github.com/zdharma/fast-syntax-highlighting.git
+    path = slimzsh/fast-syntax-highlighting
+    branch = master
+
+[subtree "slimzsh/pure"]
+    url = https://github.com/zdharma/fast-syntax-highlighting.git
+    path = https://github.com/sindresorhus/pure.git
+    branch = master
+
 # Add subtree
 # git subtree add --prefix $path $url $branch --squash
+
+# remove dependency folders
+# then add them like above
