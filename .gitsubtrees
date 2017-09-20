@@ -20,3 +20,8 @@
 
 # remove dependency folders
 # then add them like above
+
+# THINGS I MISS:
+# what remote host am I on
+# show the exit code
+# I had a bunch of bins/extras/aliases
