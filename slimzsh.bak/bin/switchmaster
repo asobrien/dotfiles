@@ -1,0 +1,29 @@
+#!/bin/bash
+# I stole this straight from stella's dotfiles
+# it may or may not have been modified
+if [ "$1" == "" ] ; then
+    echo "Which master?"
+    exit -1
+fi
+
+case "$1" in
+    "stg"|"stage")
+        MASTER='salt-stg.longtailvideo.com'
+        ;;
+    "prd"|"prod")
+        MASTER='salt-prd.longtailvideo.com'
+        ;;
+    "mine")
+        MASTER="salt-${USER}.longtailvideo.com"
+        ;;
+    *)
+        MASTER="salt-${1}.longtailvideo.com"
+        ;;
+    
+esac
+
+sudo salt-call saltutil.revoke_auth
+sudo stop salt-minion > /dev/null
+sudo test -f /etc/salt/pki/minion/minion_master.pub && sudo rm /etc/salt/pki/minion/minion_master.pub
+sudo perl -pi -e "s/master:.*$/master: $MASTER/" /etc/salt/minion
+

@@ -1,0 +1,27 @@
+path = slimzsh/submod/zsh-history-substring-search
+url = https://github.com/zsh-users/zsh-history-substring-search.git
+
+path = slimzsh/submod/zsh-syntax-highlighting
+url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+path = vim/bundle/nerdtree
+url = https://github.com/scrooloose/nerdtree.git
+
+path = vim/bundle/vim-airline
+url = https://github.com/vim-airline/vim-airline
+
+path = vim/bundle/vim-airline-themes
+url = https://github.com/vim-airline/vim-airline-themes
+
+path = vim/bundle/salt-vim
+url = https://github.com/saltstack/salt-vim.git
+
+path = vim/bundle/vim-sensible
+url = https://github.com/tpope/vim-sensible.git
+
+path = vim/bundle/dracula-theme
+url = https://github.com/dracula/vim.git
+
+path = vim/bundle/vim-fugitive
+url = https://github.com/tpope/vim-fugitive.git
+
