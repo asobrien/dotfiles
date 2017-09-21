@@ -1,13 +1,17 @@
+# .zshrc (3)
+# interactive shell config
+
 export LC_ALL=en_US.UTF-8
 
 # Print a random, hopefully interesting, adage.
-if (( $+commands[fortune] )); then
-  if [[ -t 0 || -t 1 ]]; then
-    print
-    fortune -s
-    print
-  fi
-fi
+#if (( $+commands[fortune] )); then
+#  if [[ -t 0 || -t 1 ]]; then
+#    print
+#    fortune -s
+#    print
+#  fi
+#fi
+
 
 
 # main entry point to the slimzsh framework

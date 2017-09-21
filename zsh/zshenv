@@ -1,3 +1,14 @@
+# .zshenv (1)
+# always sourced
+# see: http://zsh.sourceforge.net/Intro/intro_3.html
+#
+# order of files:
+# .zshenv
+# .zprofile
+# .zshrc
+# .zlogin
+# .zlogout
+
 # Bugfix for history substring search
 # see: https://github.com/robbyrussell/oh-my-zsh/issues/1433
 DEBIAN_PREVENT_KEYBOARD_CHANGES=yes

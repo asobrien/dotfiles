@@ -1,11 +1,15 @@
-# .zlogin
+# .zlogin (4) -- should not change the shell envrironment, it should be
+# used to set the terminal type and run external commands
+#
+# sourced on the start of a login shell
 # executed after .zshrc
 
+
 # Print a random, hopefully interesting, adage.
-#if (( $+commands[fortune] )); then
-#  if [[ -t 0 || -t 1 ]]; then
-#    print
-#    fortune -s
-#    print
-#  fi
-#fi
+if (( $+commands[fortune] )); then
+  if [[ -t 0 || -t 1 ]]; then
+    print
+    fortune -s
+    print
+  fi
+fi
