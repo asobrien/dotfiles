@@ -84,6 +84,16 @@ prompt_pure_check_git_arrows() {
 	[[ -n $arrows ]] && prompt_pure_git_arrows=" ${arrows}"
 }
 
+prompt_pure_check_k8s() {
+	# reset k8s env
+	prompt_pure_k8s_env=
+
+	if [[ ! -z $KUBECONFIG ]]; then
+		local cfile=`basename ${KUBECONFIG}`
+		prompt_pure_k8s_env=" ⎈ ${cfile##*-}"
+	fi
+}
+
 prompt_pure_set_title() {
 	# emacs terminal does not support settings the title
 	(( ${+EMACS} )) && return
@@ -135,6 +145,8 @@ prompt_pure_preprompt_render() {
 
 	# construct preprompt, beginning with path
 	local preprompt="%F{blue}%~%f"
+	# k8s info
+	preprompt+="%F{cyan}${prompt_pure_k8s_env}%f"
 	# git info
 	preprompt+="%F{$git_color}${vcs_info_msg_0_}${prompt_pure_git_dirty}%f"
 	# git pull/push arrows
@@ -213,6 +225,9 @@ prompt_pure_precmd() {
 
 	# shows the full path in the title
 	prompt_pure_set_title 'expand-prompt' '%~'
+
+	# check KUBECONFIG
+	prompt_pure_check_k8s
 
 	# get vcs info
 	vcs_info
