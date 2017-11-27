@@ -77,3 +77,8 @@ get_ssl_cert() {
 
   echo "Q" | openssl s_client ${CA_CERTS[@]} -connect ${SSL_CERT_HOST}:443 | openssl x509 -noout -text
 }
+
+# Open today's logbook
+lb() {
+    vim ~/logbook/$(date '+%Y-%m-%d').md
+}
