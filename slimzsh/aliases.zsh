@@ -82,3 +82,9 @@ get_ssl_cert() {
 lb() {
     vim ~/logbook/$(date '+%Y-%m-%d').md
 }
+
+# automatic tmux session
+automux() {
+  local SESSION=${1:-base}
+  [[ $- == *i* && $SSH_TTY && -z $TMUX && ! -r ~/.notmux ]] && tmux -CC attach-session -t ${SESSION} || tmux -CC new -s ${SESSION} && exit
+}
