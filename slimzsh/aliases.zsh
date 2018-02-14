@@ -83,6 +83,7 @@ lb() {
     vim ~/logbook/$(date '+%Y-%m-%d').md
 }
 
+# FIMXE
 # automatic tmux session
 automux() {
   local SESSION=${1:-base}
