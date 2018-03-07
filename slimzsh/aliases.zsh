@@ -89,3 +89,7 @@ automux() {
   local SESSION=${1:-base}
   [[ $- == *i* && $SSH_TTY && -z $TMUX && ! -r ~/.notmux ]] && tmux -CC attach-session -t ${SESSION} || tmux -CC new -s ${SESSION} && exit
 }
+
+yaml2json() {
+  python -c 'import sys, yaml, json; y=yaml.load(sys.stdin.read()); print json.dumps(y, indent=4, sort_keys=True)'
+}
