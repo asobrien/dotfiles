@@ -75,7 +75,7 @@ get_ssl_cert() {
     (>&2 echo '\033[1;33mNo CA certs found; you may see verification errors\033[0m')
   fi
 
-  echo "Q" | openssl s_client ${CA_CERTS[@]} -connect ${SSL_CERT_HOST}:443 | openssl x509 -noout -text
+  echo "Q" | openssl s_client ${CA_CERTS[@]} -connect ${SSL_CERT_HOST}:443 -servername ${SSL_CERT_HOST} | openssl x509 -noout -text
 }
 
 # Open today's logbook
