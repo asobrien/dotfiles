@@ -1,5 +1,10 @@
 [core]
 	excludesfile = /Users/aobrien/.gitignore_global
+[alias]
+	diff-remote = diff origin..master
+	ff = pull --ff-only
+	fixup = rebase -i HEAD~5
+	graph = log --oneline --all --graph --decorate
 [push]
 	default = simple
 [user]
@@ -7,7 +12,7 @@
 	email = anthony@bearonis.com
 	signingkey = F35AAAA4
 [color]
-	ui = auto
+	ui = never
 [mergetool "Kaleidoscope"]
 	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustexitcode = true
