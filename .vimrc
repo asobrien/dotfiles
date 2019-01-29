@@ -84,6 +84,9 @@ au BufRead,BufNewFile *.go setlocal ft=go
 au BufNewFile,BufRead *.dsl setlocal ft=
 
 
+" strip trailing whitespace when coding
+autocmd FileType go,yaml,python,php,md autocmd BufWritePre <buffer> %s/\s\+$//e
+
 " per-file-type settings
 au FileType * setlocal colorcolumn=0
 
