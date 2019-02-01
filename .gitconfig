@@ -5,6 +5,7 @@
 	ff = pull --ff-only
 	fixup = rebase -i HEAD~5
 	graph = log --oneline --all --graph --decorate
+	what = whatchanged -p --abbrev-commit --pretty=medium
 [push]
 	default = simple
 [user]
