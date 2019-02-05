@@ -66,8 +66,6 @@ alias refetch='cvs -q up -PACd'
 alias telnet='telnet -K'
 alias tin='tin -arQ'
 alias u='cvs -q up -PAd'
-# serve up the current directory
-alias webserver="ifconfig | grep 'inet ' | grep -v 127.0.0.1; python -m SimpleHTTPServer"
 
 # when i say vi i mean vim (if it's installed)
 if [ -x "`which vim`" ]; then
