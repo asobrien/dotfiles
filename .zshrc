@@ -21,7 +21,7 @@ export MYSQL_HISTFILE=/dev/null
 # get off my lawn
 export NO_COLOR=1
 
-export PATH=~/bin:~/go/bin:/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin:~/bin:~/go/bin
 
 # let control+w only delete one directory of a path, not the whole word
 export WORDCHARS='*?_[]~=&;!#$%^(){}'
@@ -45,6 +45,7 @@ bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Do
 
 # i'm too lazy to type these out
+alias ..='cd ../'
 alias calc='perl -pe "print eval(\$_) . chr(10);"'
 alias cdu='cvs -q diff -upRN'
 alias clip='xclip -in -selection clipboard'
