@@ -92,8 +92,22 @@ setopt hist_ignore_dups              # don't add repeats to history
 setopt hist_ignore_space             # prepend secret things with a <space> for no history
 setopt hist_verify                   # verify expansions before executing
 setopt inc_append_history            # write events as they happen so they show in other terms
-PS1='%n@%m:%~%(!.#.>) '              # prompt
+setopt promptsubst                   # allow a dynamic prompt
 TMOUT=0                              # don't auto logout
+REPORTTIME=120                       # i want to know about slow tasks
+
+# prompt
+PS1='%n@%m:%(4~|%-1~/…/%2~|%~)%(!.#.$) '              # prompt
+
+# determines cluster based on last component of config file
+function kubeprompt() {
+    if [[ ! -z $KUBECONFIG ]]; then
+      local cfile=`basename ${KUBECONFIG}`
+      echo " ⎈ ${cfile##*-}"
+    fi
+}
+
+RPS1='$(kubeprompt)'                                  # what cluster?
 
 # i am frequently too quick to logout with control+d twice (one to exit ssh,
 # another to close the terminal) and will miss the 'you have suspended jobs'
