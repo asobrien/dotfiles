@@ -97,7 +97,7 @@ TMOUT=0                              # don't auto logout
 REPORTTIME=120                       # i want to know about slow tasks
 
 # prompt
-PS1='%n@%m:%(4~|%-1~/…/%2~|%~)%(!.#.$) '              # prompt
+PS1='%n@%m:%(4~|%-1~/…/%1~|%~)%(!.#.$) '              # prompt
 
 # determines cluster based on last component of config file
 function kubeprompt() {
