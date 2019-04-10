@@ -4,11 +4,12 @@
 	diff-remote = diff origin..master
 	ff = pull --ff-only
 	fixup = rebase -i HEAD~5
-	graph = log --oneline --all --graph --decorate
+	graph = log --oneline --graph --decorate --abbrev-commit
 	what = whatchanged -p --abbrev-commit --pretty=medium
 	on = rev-parse --abbrev-ref HEAD
+    recent = branch --sort=-committerdate
 [push]
-	default = simple
+	default = current
 [user]
 	name = Anthony O'Brien
 	email = anthony@bearonis.com
