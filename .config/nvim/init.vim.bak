@@ -1,0 +1,42 @@
+
+filetype plugin indent on
+
+" General Settings:
+set background=dark             " Dark background
+set clipboard=unnamed           " yank and paste with the system clipboard
+set expandtab                   " Use spaces instead of tabs
+set hlsearch                    " Highlight search matches
+set ignorecase                  " Ignore search case...
+set smartcase                   " ... unless search contains caps
+set incsearch                   " Incremental search<Paste>
+set nocompatible                " Don't start in vi compatibility mode
+set nopaste                     " Don't paste, we want normal insert mode
+set ruler                       " Show postion of pointer
+set scrolloff=3                 " show context above/below cursorline
+set shiftwidth=4                " 4 spaces tabbing
+set showcmd                     " Show command
+set showmode                    " Show mode in search
+set smartindent                 " In a smarty way
+set softtabstop=4               " 4 spaces tabbing
+set splitright                  " splitting a window will put it to the right
+set tabstop=4                   " 4 spaces tabbing
+set ttyfast                     " Fast, nice updating
+set wildmenu                    " show a navigable menu for tab completion
+set wildmode=longest,list,full
+syntax enable                   " highlight syntax
+
+" Unlimited persistent undo:
+set undofile
+set undodir=~/.config/nvim/undo
+
+" Filetypes
+autocmd BufRead,BufNewFile *.md set filetype=markdown
+
+" Sane tab behavior
+nmap <Tab> >>
+nmap <S-Tab> <<
+
+" My own colors
+set t_Co=256
+colorscheme blaquemagick
+

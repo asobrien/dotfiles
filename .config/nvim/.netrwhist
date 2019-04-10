@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/aobrien/code/giphy/infra/tf/bootstrap/terraform'
+let g:netrw_dirhist_2='/Users/aobrien/code/giphy/infra/tf/env/mgmt/_meta'
+let g:netrw_dirhist_3='/Users/aobrien/code/giphy/kube-manifests/system/monitoring/kubednsmon'
+let g:netrw_dirhist_4='/Users/aobrien/code/giphy/infra/tf/modules/nyc_vpn'
+let g:netrw_dirhist_5='/Users/aobrien/code/giphy/infra/tf/modules/subnet'
+let g:netrw_dirhist_6='/Users/aobrien/code/giphy/infra/tf/modules/kops/v1'
+let g:netrw_dirhist_7='/Users/aobrien/code/giphy/infra/tf/modules/kops/v1/cluster/templates'
+let g:netrw_dirhist_8='/Users/aobrien/Desktop/coredns'
+let g:netrw_dirhist_9='/Users/aobrien/code/giphy/kube-manifests/giphy/manifests/common/create-api'

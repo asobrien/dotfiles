@@ -1,0 +1,45 @@
+[core]
+	excludesfile = /Users/aobrien/.gitignore_global
+[alias]
+	diff-remote = diff origin..master
+	ff = pull --ff-only
+	fixup = rebase -i HEAD~5
+	graph = log --oneline --graph --decorate --abbrev-commit
+	what = whatchanged -p --abbrev-commit --pretty=medium
+	on = rev-parse --abbrev-ref HEAD
+    recent = branch --sort=-committerdate
+[push]
+	default = current
+[user]
+	name = Anthony O'Brien
+	email = anthony@bearonis.com
+	signingkey = F35AAAA4
+[color]
+	ui = never
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+[merge]
+	tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+[diff]
+	tool = Kaleidoscope
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	staash = stash save --include-untracked
+[commit]
+	gpgsign = false
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+[secrets]
+	providers = git secrets --aws-provider
+	patterns = [A-Z0-9]{20}
+	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+	allowed = AKIAIOSFODNN7EXAMPLE
+	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY

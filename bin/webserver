@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# webserver
+# runs a simple python webserver displaying IP information
+# prior to starting. Python3 is the preferred runtime.
+
+# display IP information
+ifconfig | grep 'inet ' | grep -v 127.0.0.1
+
+python=$(command -v python3 2>/dev/null || command -v python 2>/dev/null)
+
+if [ -z "$python" ]; then
+    (>&2 echo "python not found")
+    exit 1
+fi
+
+# i prefer python3
+if $python -V 2>&1 | grep -q "Python 3"; then
+    exec $python -m http.server
+else
+    exec $python -m SimpleHTTPServer
+fi

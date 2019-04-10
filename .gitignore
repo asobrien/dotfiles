@@ -1,0 +1,6 @@
+.gitcookies
+.vim/backup
+.vim/gutentags
+.vim/swp
+.vim/.netrwhist
+.config/nvim/undo
