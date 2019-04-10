@@ -41,8 +41,8 @@ autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey "^[[A" up-line-or-beginning-search # Up
-bindkey "^[[B" down-line-or-beginning-search # Do
+bindkey '^[[A' up-line-or-beginning-search # Up
+bindkey '^[[B' down-line-or-beginning-search # Do
 
 # i'm too lazy to type these out
 alias ..='cd ../'
@@ -81,17 +81,18 @@ fi
 setopt noclobber                     # halp me
 setopt nohup                         # don't kill things when i logout
 setopt print_exit_value              # i want to know if something went wrong
-HISTFILE=~/.zhistory
-HISTSIZE=500
+HISTSIZE=10000
 SAVEHIST=10000
+HISTFILE=~/.zhistory
 HISTCONTROL=ignoredupes              # i don't expect the same thing to give different results
-setopt append_history                # all my eggs in one basket
 setopt extended_history              # i want to know when this happened
 setopt hist_expire_dups_first        # remove old duplicate events first
 setopt hist_ignore_dups              # don't add repeats to history
+setopt hist_ignore_all_dups          # only keep the latest usage
 setopt hist_ignore_space             # prepend secret things with a <space> for no history
 setopt hist_verify                   # verify expansions before executing
 setopt inc_append_history            # write events as they happen so they show in other terms
+setopt share_history                 # there can only be one!
 setopt promptsubst                   # allow a dynamic prompt
 TMOUT=0                              # don't auto logout
 REPORTTIME=120                       # i want to know about slow tasks
