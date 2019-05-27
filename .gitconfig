@@ -34,8 +34,8 @@
 	staash = stash save --include-untracked
 [commit]
 	gpgsign = false
-[url "git@github.com:"]
-    insteadOf = https://github.com/
+# [url "git@github.com:"]
+#     insteadOf = https://github.com/
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = [A-Z0-9]{20}
