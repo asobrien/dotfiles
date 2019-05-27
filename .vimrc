@@ -83,6 +83,8 @@ au BufRead,BufNewFile *.go setlocal ft=go
 
 au BufNewFile,BufRead *.dsl setlocal ft=
 
+" markdown should be automatically wrapped at 80 columns
+au BufRead,BufNewFile *.md setlocal textwidth=80
 
 " strip trailing whitespace when coding
 autocmd FileType go,yaml,python,php,md autocmd BufWritePre <buffer> %s/\s\+$//e
@@ -95,7 +97,7 @@ au FileType asm,c,cpp,go,java,javascript,php,html,make,objc,perl setlocal tw=79 
 
 " ruby has soft tabs
 au FileType ruby,eruby setlocal ts=2 sw=2 tw=79 et sts=2 autoindent colorcolumn=80
-au FileType yaml setlocal ts=2 sw=2 et colorcolumn=80
+au FileType yml,yaml setlocal ts=2 sw=2 et colorcolumn=80
 
 " makefiles and c have tabstops at 8 for portability
 au FileType make,c,cpp setlocal ts=8 sw=8
