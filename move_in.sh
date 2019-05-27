@@ -30,6 +30,16 @@ for f in .???*; do
 	(cd ~/; ln -s .dotfiles/$f $f)
 done
 
+# fill ~/.config with the contents of _config
+if [ ! -d ~/.config ]; then
+    mkdir -p ~/.config
+fi
+for s in _config/*; do
+    f=$(echo $s | sed 's/^_/\./')
+    rm -f ~/$f
+    (cd ~/; ln -s .dotfiles/$s $f)
+done
+
 # don't pollute ~/ with meta dotfiles
 for f in .git .gitignore .gitmodules; do
     if [ -L "~/$f" ]; then
