@@ -5,15 +5,18 @@
 #
 # usage: get_cert <hostname>
 
+set -e
+set -o pipefail
+
 SSL_CERT_HOST="${1}"
 CA_CERTS=""
 
-if [[ `uname` == "Darwin2" ]]; then
-CA_CERTS=("-CAfile" "/usr/local/etc/openssl/cert.pem")
-elif [[ `uname` == "Linux" ]]; then
-CA_CERTS=("-CApath" "/etc/ssl/certs/")
+if [[ $OSTYPE = darwin* ]]; then
+    CA_CERTS=("-CAfile" "/usr/local/etc/openssl/cert.pem")
+elif [[ $OSTYPE == linux* ]]; then
+    CA_CERTS=("-CApath" "/etc/ssl/certs/")
 else
-(>&2 echo '\033[1;33mNo CA certs found; you may see verification errors\033[0m')
+    (>&2 echo 'unsupported OSTYPE: no CA cert path specified, errors may be seen')
 fi
 
-echo "Q" | openssl s_client ${CA_CERTS[@]} -connect ${SSL_CERT_HOST}:443 -servername ${SSL_CERT_HOST} | openssl x509 -noout -text
+echo "Q" | openssl s_client ${CA_CERTS[@]} -connect ${SSL_CERT_HOST}:443 -servername ${SSL_CERT_HOST} 2>/dev/null | openssl x509 -noout -text
