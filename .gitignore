@@ -3,5 +3,4 @@
 .vim/gutentags
 .vim/swp
 .vim/.netrwhist
-.config/**
-.config/nvim/undo
+_config/nvim/undo
