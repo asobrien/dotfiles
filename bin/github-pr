@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# Open the a compare window for the current branch. This is useful
+# for making PRs or looking at the status of an open PR directly
+# from the checked out branch.
+#
+# This assumes the remote is `origin`.
+
+set -eu
+set -o pipefail
+
+# GitHub defaults to the default branch
+# default=$(git symbolic-ref refs/remotes/origin/HEAD \
+#            | sed 's@^refs/remotes/origin/@@')
+
+# checked out branch
+branch=$(git symbolic-ref --short HEAD)
+
+# find org/repo
+repo=$(git ls-remote --get-url \
+        | cut -d ':' -f 2 \
+        | sed 's@.git@@')
+
+# launch browser
+exec open "https://github.com/${repo}/compare/${branch}?expand=1"
+
