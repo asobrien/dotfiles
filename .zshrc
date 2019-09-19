@@ -219,6 +219,24 @@ if [ -f ~/.zshrc.local ]; then
    source ~/.zshrc.local
 fi
 
+# utilize ondir, if it's installed
+if [ -x "`which ondir`" ]; then
+    cd()
+    {
+       builtin cd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+    }
+
+    pushd()
+    {
+       builtin pushd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+    }
+
+    popd()
+    {
+       builtin popd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+    }
+fi
+
 if [ "$STORE_LASTDIR" = "1" ]; then
    # now go to the last dir that was there
    chpwd() {
