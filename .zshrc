@@ -46,6 +46,9 @@ bindkey '^[[B' down-line-or-beginning-search # Do
 
 # i'm too lazy to type these out
 alias ..='cd ../'
+alias ../..='cd ../../'
+alias ../../..='cd ../../../'
+alias ../../../..='cd ../../../..'
 alias calc='perl -pe "print eval(\$_) . chr(10);"'
 alias cdu='cvs -q diff -upRN'
 alias clip='xclip -in -selection clipboard'
