@@ -7,7 +7,9 @@
 	graph = log --oneline --graph --decorate --abbrev-commit
 	what = whatchanged -p --abbrev-commit --pretty=medium
 	on = rev-parse --abbrev-ref HEAD
-    recent = branch --sort=-committerdate
+	recent = branch --sort=-committerdate
+	track = "!git branch --set-upstream-to=origin/$(git on) $(git on)"
+	pr = "!github-pr"
 [push]
 	default = current
 [user]
