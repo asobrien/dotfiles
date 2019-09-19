@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# Cleans up a local git repo by deleting any merged branches
+# and pruning remote branches.
+
+set -e
+set -o pipefail
+
+git branch --merged \
+    | egrep -v "(^\*|master|develop)" \
+    | xargs -n 1 git branch -d \
+    && git fetch --prune
