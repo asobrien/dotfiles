@@ -1,1 +1,2 @@
 --nocolor
+--ignore-dir=vendor
