@@ -26,6 +26,10 @@ fi
 
 cd ~/.dotfiles
 for f in .???*; do
+    # don't pollute ~/ with meta dotfiles
+    if [[ "$f" == ".git" || "$f" == ".gitignore" || "$f" == ".gitmodules" ]]; then
+        continue
+    fi
 	rm -f ~/$f
 	(cd ~/; ln -s .dotfiles/$f $f)
 done
@@ -38,11 +42,4 @@ for s in _config/*; do
     f=$(echo $s | sed 's/^_/\./')
     rm -f ~/$f
     (cd ~/; ln -s .dotfiles/$s $f)
-done
-
-# don't pollute ~/ with meta dotfiles
-for f in .git .gitignore .gitmodules; do
-    if [ -L "~/$f" ]; then
-        rm -f ~/$f
-    fi
 done
