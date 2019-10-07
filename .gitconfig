@@ -11,6 +11,7 @@
 	track = "!git branch --set-upstream-to=origin/$(git on) $(git on)"
 	pr = "!github-pr"
 	cleanup = "!git-cleanup"
+    default-branch = "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
 [push]
 	default = current
 [user]

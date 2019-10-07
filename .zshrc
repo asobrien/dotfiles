@@ -208,6 +208,8 @@ if [[ $OSTYPE != darwin* ]]; then
    alias pbcopy='xclip -in -selection clipboard'
 fi
 
+# FIXME: this messes up formatting with `dat +%s`, so disbale it
+# see: https://github.com/robbyrussell/oh-my-zsh/issues/521
 case $TERM in
     xterm*)
         precmd() {print -Pn "\e]0;%m:%~>\a"}
