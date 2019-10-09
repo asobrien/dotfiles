@@ -136,7 +136,6 @@ WATCHFMT="%B%n%b %a %l at %@"
 
 # etc
 limit coredumpsize 0                 # don't know why you'd want anything else
-umask 077                            # my own private idaho
 
 autoload -Uz compinit
 compinit
