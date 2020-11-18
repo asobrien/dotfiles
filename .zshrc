@@ -24,7 +24,7 @@ export NO_COLOR=1
 export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin:~/bin:~/go/bin:~/.dotfiles/bin
 
 # let control+w only delete one directory of a path, not the whole word
-export WORDCHARS='*?_[]~=&;!#$%^(){}'
+export WORDCHARS='*_[]~;!#$%^(){}'
 
 # on non-interactive shells, just exit here to speed things up
 if [[ ! -o interactive ]]; then
