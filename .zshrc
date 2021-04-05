@@ -21,7 +21,7 @@ export MYSQL_HISTFILE=/dev/null
 # get off my lawn
 export NO_COLOR=1
 
-export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin:~/bin:~/go/bin:~/.dotfiles/bin
+export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin:~/bin:~/go/bin:~/.dotfiles/bin
 
 # let control+w only delete one directory of a path, not the whole word
 export WORDCHARS='*_[]~;!#$%^(){}'
@@ -70,6 +70,7 @@ alias refetch='cvs -q up -PACd'
 alias telnet='telnet -K'
 alias tin='tin -arQ'
 alias u='cvs -q up -PAd'
+alias kraken="AWS_PROFILE=giphy kraken"
 
 # when i say vi i mean vim (if it's installed)
 if [ -x "`which vim`" ]; then
@@ -221,29 +222,48 @@ if [ -f ~/.zshrc.local ]; then
 fi
 
 # utilize ondir, if it's installed
-if [ -x "`which ondir`" ]; then
-    cd()
-    {
-       builtin cd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
-    }
+# I don't really use this, at least that's what I think now,
+# so just disable it for the time being
+# if [ -x "`which ondir`" ]; then
+#     cd()
+#     {
+#        builtin cd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+#     }
+# 
+#     pushd()
+#     {
+#        builtin pushd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+#     }
+# 
+#     popd()
+#     {
+#        builtin popd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
+#     }
+# fi
 
-    pushd()
-    {
-       builtin pushd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
-    }
+# I find this a bit too sticky, let's try md/gd instead
+# if [ "$STORE_LASTDIR" = "1" ]; then
+#    # now go to the last dir that was there
+#    chpwd() {
+#       pwd >! ~/.zsh.lastdir
+#    }
+# 
+#    if [ -f ~/.zsh.lastdir ]; then
+#       if [ -d "`cat ~/.zsh.lastdir`" ]; then
+#          cd "`cat ~/.zsh.lastdir`"
+#       else
+#          rm -f ~/.zsh.lastdir
+#       fi
+#    fi
+# fi
 
-    popd()
-    {
-       builtin popd "$@" && eval "`ondir \"$OLDPWD\" \"$PWD\"`"
-    }
-fi
+# mark this dir; use gd to enter
+md() {
+  pwd >! ~/.zsh.lastdir
+}
 
-if [ "$STORE_LASTDIR" = "1" ]; then
-   # now go to the last dir that was there
-   chpwd() {
-      pwd >! ~/.zsh.lastdir
-   }
-
+# goto marked dir; use md to set
+gd() {
    if [ -f ~/.zsh.lastdir ]; then
       if [ -d "`cat ~/.zsh.lastdir`" ]; then
          cd "`cat ~/.zsh.lastdir`"
@@ -251,4 +271,5 @@ if [ "$STORE_LASTDIR" = "1" ]; then
          rm -f ~/.zsh.lastdir
       fi
    fi
-fi
+}
+
