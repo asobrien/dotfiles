@@ -1,2 +1,4 @@
 --nocolor
 --ignore-dir=vendor
+--ignore-dir=.terraform
+--ignore-file=match:terraform.tfstate
