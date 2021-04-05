@@ -1,6 +1,7 @@
 # my WIP notes
 scratchpad
 scratchfile
+_scratch
 _scratch/**
 
 # OS generated files #
@@ -12,3 +13,7 @@ _scratch/**
 
 # Editors
 .vscode
+
+# Macports
+PortIndex
+PortIndex.quick

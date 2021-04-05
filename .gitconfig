@@ -3,7 +3,7 @@
 [alias]
 	diff-remote = diff origin..master
 	ff = pull --ff-only
-	fixup = rebase -i HEAD~5
+	fixup = rebase -i HEAD~10
 	graph = log --oneline --graph --decorate --abbrev-commit
 	what = whatchanged -p --abbrev-commit --pretty=medium
 	on = rev-parse --abbrev-ref HEAD
@@ -11,7 +11,10 @@
 	track = "!git branch --set-upstream-to=origin/$(git on) $(git on)"
 	pr = "!github-pr"
 	cleanup = "!git-cleanup"
-    default-branch = "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
+    # default-branch = "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
+    default-branch = "!git remote show origin | grep 'HEAD branch:' | awk '{print $3}'"
+    home = "!git checkout $(git default-branch)"
+    gohome = "!git checkout $(git default-branch)"
 [push]
 	default = current
 [user]
@@ -36,10 +39,11 @@
 [alias]
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	staash = stash save --include-untracked
+	root = rev-parse --show-toplevel
 [commit]
 	gpgsign = false
-# [url "git@github.com:"]
-#     insteadOf = https://github.com/
+[url "git@github.com:"]
+    insteadOf = https://github.com/
 [secrets]
 	providers = git secrets --aws-provider
 	patterns = [A-Z0-9]{20}
@@ -47,3 +51,5 @@
 	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
 	allowed = AKIAIOSFODNN7EXAMPLE
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+[init]
+	defaultBranch = main
