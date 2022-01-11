@@ -11,10 +11,10 @@ rm -f ~/.cshrc \
 	~/.cvsrc
 
 # don't keep my history
-for f in .bash_history .sqlite_history .mysql_history; do
-	rm -f ~/$f
-	ln -s /dev/null ~/$f
-done
+# for f in .bash_history .sqlite_history .mysql_history; do
+# 	rm -f ~/$f
+# 	ln -s /dev/null ~/$f
+# done
 
 if [ -d ~/.dotfiles ]; then
 	cd ~/.dotfiles

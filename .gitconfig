@@ -10,9 +10,8 @@
 	recent = branch --sort=-committerdate
 	track = "!git branch --set-upstream-to=origin/$(git on) $(git on)"
 	pr = "!github-pr"
-	cleanup = "!git-cleanup"
-    # default-branch = "!git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'"
-    default-branch = "!git remote show origin | grep 'HEAD branch:' | awk '{print $3}'"
+    cleanup = "!git-cleanup"
+default-branch = "!git remote show origin | grep 'HEAD branch:' | awk '{print $3}'"
     home = "!git checkout $(git default-branch)"
     gohome = "!git checkout $(git default-branch)"
 [push]
