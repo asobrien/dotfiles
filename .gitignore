@@ -3,6 +3,7 @@
 .vim/gutentags
 .vim/swp
 .vim/.netrwhist
+.vim/plugged
 _config/nvim/undo
 
 # $work

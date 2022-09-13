@@ -78,3 +78,14 @@ nmap <C-p> :bp<CR>
 " :w !sudo tee %
 "
 
+" vim-plug: use single quotes
+" run after modifying: vim +PlugInstall +qall
+call plug#begin()
+Plug 'mileszs/ack.vim'
+call plug#end()
+
+" Plugin Config
+" ack
+if executable('ag')
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+endif

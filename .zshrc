@@ -22,6 +22,7 @@ alias cp='cp -i'                        # ask nicely
 alias ls='ls -aF'                       # show all files and indicate type
 alias mv='mv -i'                        # ask nicely
 alias telnet='telnet -K'                # no autologin
+alias ag='ag --nocolor'                 # this is .agrc
 
 # work
 alias kraken='AWS_PROFILE=giphy kraken' # its usually where i want to be
