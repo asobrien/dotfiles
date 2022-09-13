@@ -12,7 +12,7 @@ SSL_CERT_HOST="${1}"
 CA_CERTS=""
 
 if [[ $OSTYPE = darwin* ]]; then
-    CA_CERTS=("-CAfile" "/usr/local/etc/openssl/cert.pem")
+    CA_CERTS=("-CAfile" "/usr/local/etc/openssl@1.1/cert.pem")
 elif [[ $OSTYPE == linux* ]]; then
     CA_CERTS=("-CApath" "/etc/ssl/certs/")
 else
