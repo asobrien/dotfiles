@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/aobrien/.gitignore_global
+	excludesfile = /Users/aob/.gitignore_global
 [alias]
 	diff-remote = diff origin..master
 	ff = pull --ff-only
@@ -11,9 +11,13 @@
 	track = "!git branch --set-upstream-to=origin/$(git on) $(git on)"
 	pr = "!github-pr"
     cleanup = "!git-cleanup"
-default-branch = "!git remote show origin | grep 'HEAD branch:' | awk '{print $3}'"
+    # default-branch = "!git rev-parse --abbrev-ref origin/HEAD | awk -F/ '{print $2}'"
+    # requires remote
+    default-branch = "!git remote show origin | grep 'HEAD branch:' | awk '{print $3}'"
     home = "!git checkout $(git default-branch)"
     gohome = "!git checkout $(git default-branch)"
+    apply-diff = "!f() { git diff ...$1 | git apply --whitespace=fix - ; }; f"
+    ahead = log --oneline origin/main..HEAD
 [push]
 	default = current
 [user]
@@ -52,3 +56,7 @@ default-branch = "!git remote show origin | grep 'HEAD branch:' | awk '{print $3
 	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 [init]
 	defaultBranch = main
+[pull]
+	rebase = true
+[spr]
+	requireTestPlan = false

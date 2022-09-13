@@ -4,3 +4,6 @@
 .vim/swp
 .vim/.netrwhist
 _config/nvim/undo
+
+# $work
+bin/docker-login-aws

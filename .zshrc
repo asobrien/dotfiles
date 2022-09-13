@@ -5,7 +5,7 @@
 # no rose-colored glasses
 export NO_COLOR=1
 
-export PATH=/opt/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/go/bin:~/.cargo/bin:~/.dotfiles/bin
 
 # on non-interactive shells, duck and roll
 if [[ ! -o interactive ]]; then
@@ -60,7 +60,10 @@ setopt HIST_IGNORE_SPACE  # prepend secrets with <space> to suppress
 setopt HIST_EXPIRE_DUPS_FIRST # remove old duplicate events first
 setopt HIST_IGNORE_DUPS # don't add repeats to history
 setopt HIST_VERIFY # verify expansions before executing
-export SHELL_SESSIONS_DISABLE=1 # don't write ~/.zsh_sessions
+
+# history-search
+bindkey "^[[A" history-beginning-search-backward    # up-arrow
+bindkey "^[[B" history-beginning-search-forward     # down-arrow
 
 # prompt
 PS1="%n@%m:%1~%(!.#.$) "
