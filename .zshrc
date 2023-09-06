@@ -7,6 +7,7 @@
 export NO_COLOR=1   # no rose-colored glasses for me
 export PATH=~/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin
 # export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/go/bin:~/.cargo/bin:~/.dotfiles/bin
+export LESSHISTFILE=-   # disable
 
 # on non-interactive shells, duck and roll
 if [[ ! -o interactive ]]; then
