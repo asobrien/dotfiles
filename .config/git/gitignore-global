@@ -1,0 +1,20 @@
+# my WIP notes
+scratchpad
+scratchfile
+_scratch
+_scratch/**
+_x/**
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+.Spotlight-V100
+.Trashes
+
+# Editors
+.vscode
+
+# Macports
+PortIndex
+PortIndex.quick

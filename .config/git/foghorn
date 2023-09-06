@@ -1,0 +1,10 @@
+[user]
+	signingkey = ~/.ssh/signing.pub
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed-signers
+[tag]
+	gpgsign = true

@@ -1,0 +1,41 @@
+[user]
+	name = Anthony O'Brien
+	email = ao@bearonis.com
+[alias]
+	diff-remote = diff origin..master
+	ff = pull --ff-only
+	fixup = rebase -i HEAD~10
+	graph = log --oneline --graph --decorate --abbrev-commit
+	what = whatchanged -p --abbrev-commit --pretty=medium
+	on = rev-parse --abbrev-ref HEAD
+	staash = stash save --include-untracked
+	root = rev-parse --show-toplevel
+	recent = branch --sort=-committerdate
+	track = "!git branch --set-upstream-to=origin/$(git on) $(git on)"
+	pr = "!github-pr"
+	cleanup = "!git-cleanup"
+	# default-branch = "!git rev-parse --abbrev-ref origin/HEAD | awk -F/ '{print $2}'"
+	# requires remote
+	default-branch = "!git remote show origin | grep 'HEAD branch:' | awk '{print $3}'"
+	home = "!git checkout $(git default-branch)"
+	gohome = "!git checkout $(git default-branch)"
+	apply-diff = "!f() { git diff ...$1 | git apply --whitespace=fix - ; }; f"
+	ahead = log --oneline origin/main..HEAD
+[color]
+	ui = never
+[core]
+	excludesfile = ~/.config/gitignore-global
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	default = current
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[spr]
+	requireTestPlan = false
+[include]
+	path = ~/.config/git/@host
+	path = ~/.config/git/local
+
