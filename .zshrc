@@ -8,6 +8,12 @@ export NO_COLOR=1   # no rose-colored glasses for me
 export PATH=~/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin
 # export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/go/bin:~/.cargo/bin:~/.dotfiles/bin
 export LESSHISTFILE=-   # disable
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+export GOPATH="$XDG_DATA_HOME"/go
+export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
 
 # on non-interactive shells, duck and roll
 if [[ ! -o interactive ]]; then
