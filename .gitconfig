@@ -30,7 +30,7 @@
 [pull]
 	rebase = true
 [push]
-	default = current
+	default = nothing
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [spr]
