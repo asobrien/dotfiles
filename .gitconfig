@@ -35,6 +35,8 @@
 	insteadOf = https://github.com/
 [spr]
 	requireTestPlan = false
+	githubRemoteName = origin
+	branchPrefix = spr/ao/
 [include]
 	path = ~/.config/git/@host
 	path = ~/.config/git/local
