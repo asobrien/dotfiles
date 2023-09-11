@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# get_cert is a small utility that uses openssl to pull the
+# SSL certificate from a site specified by its hostname.
+#
+# usage: get_cert <hostname>
+
+set -e
+set -o pipefail
+
+SSL_CERT_HOST="${1}"
+CA_CERTS=""
+
+if [[ $OSTYPE = darwin* ]]; then
+    CA_CERTS=("-CAfile" "/usr/local/etc/openssl@1.1/cert.pem")
+elif [[ $OSTYPE == linux* ]]; then
+    CA_CERTS=("-CApath" "/etc/ssl/certs/")
+else
+    (>&2 echo 'unsupported OSTYPE: no CA cert path specified, errors may be seen')
+fi
+
+echo "Q" | openssl s_client ${CA_CERTS[@]} -connect ${SSL_CERT_HOST}:443 -servername ${SSL_CERT_HOST} 2>/dev/null | openssl x509 -noout -text
