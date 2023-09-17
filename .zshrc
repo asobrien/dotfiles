@@ -5,8 +5,7 @@
 
 # env vars
 export NO_COLOR=1   # no rose-colored glasses for me
-export PATH=~/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/sbin
-# export PATH=/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/go/bin:~/.cargo/bin:~/.dotfiles/bin
+export PATH=~/bin:/sbin:/usr/sbin:/bin:/usr/bin:/usr/X11R6/bin:/opt/local/sbin:/usr/local/sbin:/opt/local/bin:/usr/local/bin:${GOPATH:-~}/bin
 export LESSHISTFILE=-   # disable
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
