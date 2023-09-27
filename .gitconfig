@@ -1,3 +1,4 @@
+# vim:tw=4:noet
 [user]
 	name = Anthony O'Brien
 	email = ao@bearonis.com
@@ -9,6 +10,7 @@
 	what = whatchanged -p --abbrev-commit --pretty=medium
 	on = rev-parse --abbrev-ref HEAD
 	staash = stash save --include-untracked
+	fstash = "!f() { git stash push -u -m \"fstash: $(date)\" -- $@ ;}; f"
 	root = rev-parse --show-toplevel
 	recent = branch --sort=-committerdate
 	track = "!git branch --set-upstream-to=origin/$(git on) $(git on)"
@@ -24,7 +26,7 @@
 [color]
 	ui = never
 [core]
-	excludesfile = ~/.config/gitignore-global
+	excludesfile = ~/.config/git/gitignore-global
 [init]
 	defaultBranch = main
 [pull]
