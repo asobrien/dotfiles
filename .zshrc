@@ -54,14 +54,7 @@ bindkey "^[[B" history-beginning-search-forward     # down-arrow
 
 # prompt
 PS1="%n@%m:%1~%(!.#.$) "
-
-# # End of lines configured by zsh-newuser-install
-# # The followinge lines were added by compinstall
-# zstyle :compinstall filename '$HOME/.zshrc'
-# autoload -Uz compinit
-# compinit
-# # End of lines added by compinstall
-# #
+autoload -Uz compinit; compinit # tab completion
 
 # mark this dir; use gd to enter
 md() {
@@ -87,6 +80,3 @@ gd() {
 # precmd () {
 #     print -Pn "\e]1; %~\a" # title bar prompt
 # }
-# 
-# # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-# export PATH="$PATH:$HOME/.rvm/bin"
