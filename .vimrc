@@ -8,9 +8,10 @@ syntax on
 colorscheme aob
 
 " don't pollute directories with swap files
-silent !mkdir -p ~/.vim/{backup,swp}/
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swp//
+silent !mkdir -p ${XDG_DATA_HOME}/vim/{backup,swp,undo}
+set undodir=${XDG_DATA_HOME}/vim/undo//,/tmp//
+set backupdir=${XDG_DATA_HOME}/vim/backup//,/tmp//
+set directory=${XDG_DATA_HOME}/vim/swp//,tmp//
 
 " defaults
 set backspace=indent,eol,start 	" backspace works like i expect
@@ -75,14 +76,17 @@ nmap <C-n> :bn<CR>
 nmap <C-p> :bp<CR>
 
 " vim-plug: use single quotes
-" run after modifying: vim +PlugInstall +qall
-"call plug#begin()
-"Plug 'mileszs/ack.vim'
-"Plug 'junegunn/fzf'
-"call plug#end()
+call plug#begin()
+Plug 'ap/vim-buftabline'
+Plug 'mileszs/ack.vim'
+call plug#end()
+" autoinstall plugins if not initialized
+autocmd VimEnter * if empty(glob('~/.vim/plugged'))
+ \| PlugInstall --sync | source ~/.vimrc
+\| endif
 
 " Plugin Config
-" ack
+" ack=ag, if we have it
 if executable('ag')
   let g:ackprg = 'ag --nogroup --nocolor --column'
 endif
