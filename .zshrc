@@ -56,6 +56,13 @@ bindkey "^[[B" history-beginning-search-forward     # down-arrow
 PS1="%n@%m:%1~%(!.#.$) "
 autoload -Uz compinit; compinit # tab completion
 
+# open ag search results within vim quickfix
+vag() {
+  pattern=$1
+  shift
+  vim +"Ack '$pattern' $*"
+}
+
 # mark this dir; use gd to enter
 md() {
   local f=~/.zsh_mdir
