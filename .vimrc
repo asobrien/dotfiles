@@ -24,7 +24,7 @@ set showmode					" show current mode in command-line
 set tabstop=4					" ts; tabs as i expect them
 set softtabstop=4				" sts;
 set shiftwidth=4 				" sw;
-set shiftround					" indent to next multipe of shiftwidth
+set shiftround					" indent to next multiple of shiftwidth
 
 " tell vim what kinds of files these are based on extension
 au BufNewFile,BufRead *.phtml setlocal ft=php
@@ -77,13 +77,13 @@ nmap <C-p> :bp<CR>
 
 " vim-plug: use single quotes
 call plug#begin()
-Plug 'ap/vim-buftabline'
-Plug 'mileszs/ack.vim'
+  Plug 'ap/vim-buftabline'
+  Plug 'mileszs/ack.vim'
 call plug#end()
 " autoinstall plugins if not initialized
-autocmd VimEnter * if empty(glob('~/.vim/plugged'))
- \| PlugInstall --sync | source ~/.vimrc
-\| endif
+if empty(glob('~/.vim/plugged/*'))
+  autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
+endif
 
 " Plugin Config
 " ack=ag, if we have it
