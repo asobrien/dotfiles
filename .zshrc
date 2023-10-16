@@ -70,9 +70,9 @@ vag() {
 
 # mark this dir; use gd to enter
 md() {
-  local f=~/.zsh_mdir
+  local f=$XDG_STATE_HOME/zsh/mdir
   if [ ! -f $f ]; then
-      touch $f && chmod 0600 $f
+      mkdir -p -- $f:h && touch $f && chmod 0600 $f
   fi
   pwd >! $f
 }
@@ -88,7 +88,3 @@ gd() {
       fi
    fi
 }
-
-# precmd () {
-#     print -Pn "\e]1; %~\a" # title bar prompt
-# }
