@@ -56,6 +56,11 @@ bindkey "^[[B" history-beginning-search-forward     # down-arrow
 PS1="%n@%m:%1~%(!.#.$) "
 autoload -Uz compinit; compinit # tab completion
 
+# addons (e.g., stows)
+for f in $XDG_CONFIG_HOME/zsh/conf.d/*; do
+    source "$f"
+done
+
 # open ag search results within vim quickfix
 vag() {
   pattern=$1
