@@ -33,6 +33,7 @@ alias ag='ag --nocolor'                 # this is .agrc
 # application defaults
 export ACKRC="$XDG_CONFIG_HOME/ack/ackrc"
 alias kraken='AWS_PROFILE=${AWS_PROFILE:-giphy} kraken' # its usually where i want to be
+export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
 
 # ZSH opts
 bindkey -e                      # always use emacs-style control
