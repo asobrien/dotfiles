@@ -30,8 +30,9 @@ alias mv='mv -i'                        # ask nicely
 alias telnet='telnet -K'                # no autologin
 alias ag='ag --nocolor'                 # this is .agrc
 
-# work
-alias kraken='AWS_PROFILE=giphy kraken' # its usually where i want to be
+# application defaults
+export ACKRC="$XDG_CONFIG_HOME/ack/ackrc"
+alias kraken='AWS_PROFILE=${AWS_PROFILE:-giphy} kraken' # its usually where i want to be
 
 # ZSH opts
 bindkey -e                      # always use emacs-style control
