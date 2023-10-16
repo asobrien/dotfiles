@@ -12,6 +12,7 @@ silent !mkdir -p ${XDG_DATA_HOME}/vim/{backup,swp,undo}
 set undodir=${XDG_DATA_HOME}/vim/undo//,/tmp//
 set backupdir=${XDG_DATA_HOME}/vim/backup//,/tmp//
 set directory=${XDG_DATA_HOME}/vim/swp//,tmp//
+set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 
 " defaults
 set backspace=indent,eol,start 	" backspace works like i expect
