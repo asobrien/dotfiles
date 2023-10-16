@@ -35,7 +35,7 @@ alias kraken='AWS_PROFILE=giphy kraken' # its usually where i want to be
 
 # ZSH opts
 bindkey -e                      # always use emacs-style control
-export HISTFILE="$HOME/.zhistory"
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=10000
 export SAVEHIST=$HISTSIZE
 setopt BANG_HIST                # treat bang specially during expansion
@@ -54,7 +54,8 @@ bindkey "^[[B" history-beginning-search-forward     # down-arrow
 
 # prompt
 PS1="%n@%m:%1~%(!.#.$) "
-autoload -Uz compinit; compinit # tab completion
+autoload -Uz compinit; compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION" # tab completion
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 
 # addons (e.g., stows)
 for f in $XDG_CONFIG_HOME/zsh/conf.d/*; do
