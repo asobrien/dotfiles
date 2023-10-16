@@ -82,7 +82,7 @@ md() {
 
 # goto marked dir; use md to set
 gd() {
-  local f=~/.zsh_mdir
+  local f=$XDG_STATE_HOME/zsh/mdir
    if [ -f $f ]; then
       if [ -d "`cat $f`" ]; then
          cd "`cat $f`"
