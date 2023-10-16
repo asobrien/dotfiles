@@ -1,0 +1,6 @@
+# suppress spurios warning when unstowing
+# https://github.com/aspiers/stow/issues/65
+stow () {
+	command stow "$@" \
+        2> >(grep -v 'BUG in find_stowed_path? Absolute/relative mismatch' 1>&2)
+}
