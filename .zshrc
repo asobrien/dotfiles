@@ -6,13 +6,13 @@
 # env vars
 export NO_COLOR=1   # no rose-colored glasses for me
 export LESSHISTFILE=-   # disable
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_STATE_HOME=$HOME/.local/state
-export GOPATH="$XDG_DATA_HOME"/go
-export GOMODCACHE="$XDG_CACHE_HOME"/go/mod
-export PATH=~/bin:/sbin:/usr/sbin:/bin:/usr/bin:/usr/X11R6/bin:/opt/local/sbin:/usr/local/sbin:/opt/local/bin:/usr/local/bin:${GOPATH:-~}/bin
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export GOPATH="$XDG_DATA_HOME/go"
+export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
+export PATH=~/bin:/sbin:/usr/sbin:/bin:/usr/bin:/usr/X11R6/bin:/opt/local/sbin:/usr/local/sbin:/opt/local/bin:/usr/local/bin:${GOPATH:-~/go}/bin
 
 # on non-interactive shells, duck and roll
 if [[ ! -o interactive ]]; then
