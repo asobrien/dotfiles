@@ -11,6 +11,7 @@
 	on = rev-parse --abbrev-ref HEAD
 	staash = stash save --include-untracked
 	fstash = "!f() { git stash push -u -m \"fstash: $(date)\" -- $@ ;}; f"
+	stash-stat = "!git stash list | (while read -r s; do echo $s; git stash show -u --stat "$(echo $s | cut -d: -f1)"; done)"
 	root = rev-parse --show-toplevel
 	recent = branch --sort=-committerdate
 	track = "!git branch --set-upstream-to=origin/$(git on) $(git on)"
