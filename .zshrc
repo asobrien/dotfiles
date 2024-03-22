@@ -93,3 +93,15 @@ gd() {
       fi
    fi
 }
+
+# iterm2
+setbadge() {
+  printf "\e]1337;SetBadgeFormat=%s\a" $(echo -n "$@" | base64)
+}
+
+# usage: kubeset <name>
+kubeset() {
+  local f=($KUBECONFD/*-$1)
+  export KUBECONFIG=$f
+  (>&2 echo "k8s: config set: $f:t"); setbadge "⎈$1"
+}
