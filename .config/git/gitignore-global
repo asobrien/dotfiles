@@ -4,6 +4,7 @@ scratchfile
 _scratch
 _scratch/**
 _x/**
+_patchstore/**
 
 # OS generated files #
 ######################
