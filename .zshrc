@@ -29,6 +29,8 @@ alias ls='ls -aF'                       # show all files and indicate type
 alias mv='mv -i'                        # ask nicely
 alias telnet='telnet -K'                # no autologin
 alias ag='ag --nocolor'                 # this is .agrc
+alias gitroot='git rev-parse --show-toplevel'
+alias cd@='cd $(gitroot)'
 
 # application defaults
 export ACKRC="$XDG_CONFIG_HOME/ack/ackrc"
